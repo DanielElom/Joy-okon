@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/idara/portfolio/dark.html"
+    }
+  ]
+}
