@@ -29,6 +29,8 @@ var link_about = document.getElementById('link-about');
    for (var i = 0; i < desktop_elements.length; i++) {
       desktop_elements[i].addEventListener("click", function () {
          if (!(this.classList.contains('active'))) {
+            var nodes = Array.from(this.closest('ul').children);
+            indexPage = nodes.indexOf(this);
             if (document.body.classList.contains('animation-top')) {
                reveal('top');
             } else if (document.body.classList.contains('animation-bottom')) {
@@ -57,6 +59,8 @@ var link_about = document.getElementById('link-about');
       mobile_elements[i].addEventListener("click", function () {
 
          if (!(this.classList.contains('active'))) {
+            var nodes = Array.from(this.closest('ul').children);
+            indexPage = nodes.indexOf(this);
             if (document.body.classList.contains('animation-top')) {
                reveal('top');
             } else if (document.body.classList.contains('animation-bottom')) {
@@ -80,7 +84,7 @@ var link_about = document.getElementById('link-about');
 
          setTimeout(function () {
             $('#trigger-mobile').toggleClass('show-menu');
-			$('#mobile-nav').toggleClass('hide-list');
+            $('#mobile-nav').toggleClass('hide-list');
          }, 500);
          if ((this.classList.contains('home-link'))) {
             setTimeout(function () {
@@ -115,45 +119,34 @@ var link_about = document.getElementById('link-about');
 
    var indexPage = 0;
 
-   desktop_nav.addEventListener('click', function (e) {
-      var li = e.target.closest('li');
-      var nodes = Array.from(li.closest('ul').children);
-      indexPage = nodes.indexOf(li);
 
-   });
-
-   mobile_nav.addEventListener('click', function (e) {
-      var li = e.target.closest('li');
-      var nodes = Array.from(li.closest('ul').children);
-      indexPage = nodes.indexOf(li);
-   });
 
    link_about.addEventListener('click', function () {
 
       indexPage = 1;
 
-         if (document.body.classList.contains('animation-top')) {
-            reveal('top');
-         } else if (document.body.classList.contains('animation-bottom')) {
-            reveal('bottom');
-         } else if (document.body.classList.contains('animation-right')) {
-            reveal('right');
-         } else if (document.body.classList.contains('animation-left')) {
-            reveal('left');
-         } else if (document.body.classList.contains('animation-cornertopleft')) {
-            reveal('cornertopleft');
-         } else if (document.body.classList.contains('animation-cornertopright')) {
-            reveal('cornertopright');
-         } else if (document.body.classList.contains('animation-cornerbottomleft')) {
-            reveal('cornerbottomleft');
-         } else if (document.body.classList.contains('animation-cornerbottomright')) {
-            reveal('cornerbottomright');
-         } else {
-            reveal('top');
-         }
-         var mobile_nav_elements = document.querySelectorAll(".mobile-nav-element");
-         var desktop_nav_elements = document.querySelectorAll(".desktop-nav-element");
-         setTimeout(function () {
+      if (document.body.classList.contains('animation-top')) {
+         reveal('top');
+      } else if (document.body.classList.contains('animation-bottom')) {
+         reveal('bottom');
+      } else if (document.body.classList.contains('animation-right')) {
+         reveal('right');
+      } else if (document.body.classList.contains('animation-left')) {
+         reveal('left');
+      } else if (document.body.classList.contains('animation-cornertopleft')) {
+         reveal('cornertopleft');
+      } else if (document.body.classList.contains('animation-cornertopright')) {
+         reveal('cornertopright');
+      } else if (document.body.classList.contains('animation-cornerbottomleft')) {
+         reveal('cornerbottomleft');
+      } else if (document.body.classList.contains('animation-cornerbottomright')) {
+         reveal('cornerbottomright');
+      } else {
+         reveal('top');
+      }
+      var mobile_nav_elements = document.querySelectorAll(".mobile-nav-element");
+      var desktop_nav_elements = document.querySelectorAll(".desktop-nav-element");
+      setTimeout(function () {
          document.body.classList.remove('home-page');
          for (var i = 0; i < mobile_nav_elements.length; i++) {
             mobile_nav_elements[i].classList.remove('active');

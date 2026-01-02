@@ -8,10 +8,13 @@
 
 	function stop_videos() {
 		var video = document.getElementById("video");
-		if (video.paused !== true && video.ended !== true) {
+		if (video && video.paused !== true && video.ended !== true) {
 			video.pause();
 		}
-		$('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+		var youtubeVideos = $('.youtube-video');
+		if (youtubeVideos.length > 0) {
+			youtubeVideos[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+		}
 	}
 
 	$(window).on("load", function() {
